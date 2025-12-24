@@ -3,6 +3,8 @@ from ttkbootstrap.constants import *
 from tkinter import filedialog, messagebox, scrolledtext
 import subprocess
 import threading
+import os
+
 
 PYTHON_EXE = r"C:\Program Files\Python\python.exe"
 HARDCODED_DIST = r"C:\00\00_PyA\exe"  # hard-coded output folder
@@ -96,8 +98,10 @@ class PyInstallerGUI(tb.Window):
                 cmd,
                 stdout=subprocess.PIPE,
                 stderr=subprocess.STDOUT,
-                text=True
+                text=True,
+                creationflags=subprocess.CREATE_NO_WINDOW
             )
+
 
             # Read output line by line
             for line in process.stdout:
